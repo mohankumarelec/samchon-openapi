@@ -79,11 +79,12 @@ export namespace OpenApi {
   }
 
   export function convertSchema(
-    input: OpenApiV3.IJsonSchema
+    input: OpenApiV3.IJsonSchema, 
+    version: "3.1" | "3.0",
   ): OpenApi.IJsonSchema {
-    if (OpenApiV3_1.is(input))
+    if (version === "3.1")
       return OpenApiV3_1Emender.convertSchema({})(input) as IJsonSchema;
-    else if (OpenApiV3.is(input))
+    else if (version === "3.0")
       return OpenApiV3Upgrader.convertSchema({})(input) as IJsonSchema;
     throw new TypeError("Unrecognized Swagger/OpenAPI version.");
   }
