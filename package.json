@@ -6,7 +6,7 @@
   "module": "./lib/index.mjs",
   "typings": "./lib/index.d.ts",
   "scripts": {
-    "prepare": "ts-patch install",
+    "prepare": "ts-patch install && rimraf lib && tsc && rollup -c",
     "build": "rimraf lib && tsc && rollup -c",
     "dev": "rimraf lib && tsc --watch",
     "typedoc": "typedoc --plugin typedoc-github-theme --theme typedoc-github-theme"
